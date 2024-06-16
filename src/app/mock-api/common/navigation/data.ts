@@ -20,6 +20,10 @@ export const compactNavigation: FuseNavigationItem[] = [
         type: 'basic',
         icon: 'heroicons_outline:chart-pie',
         link: '/produtos-a-venda',
+        hidden: (item: FuseNavigationItem) => {
+            const role = AuthUtils.getUserRole();
+            return !(role === 'ROLE_CLIENTE');
+        },
     },
 
     {
