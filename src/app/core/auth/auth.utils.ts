@@ -18,6 +18,19 @@ export class AuthUtils
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
+    //Obter Permissão do usuário logado
+    static getUserRole(): string{
+        const role = this._decodeToken(localStorage.getItem('accessToken'))
+        if(role == null){
+            return null;
+        }
+        return role.roles;
+    }
+    static getUserEmail(): string{
+        const role = this._decodeToken(localStorage.getItem('accessToken'))
+        return role.sub;
+    }
+
     /**
      * Is token expired?
      *
