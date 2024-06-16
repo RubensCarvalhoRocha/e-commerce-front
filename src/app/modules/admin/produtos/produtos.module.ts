@@ -24,10 +24,12 @@ import { RouterModule } from '@angular/router';
 import { produtosRoutes } from './produtos.routing';
 import { ProdutosComponent } from './produtos-lista/produtos.component';
 import { ProdutoEditComponent } from './produto-edit/produto-edit.component';
+import { PedidosComponent } from '../pedidos/pedidos.component';
 @NgModule({
   declarations: [
     ProdutosComponent,
     ProdutoEditComponent,
+    PedidosComponent
   ],
   imports: [
     CommonModule,
