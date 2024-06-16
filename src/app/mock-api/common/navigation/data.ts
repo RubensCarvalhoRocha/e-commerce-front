@@ -22,7 +22,7 @@ export const compactNavigation: FuseNavigationItem[] = [
         link: '/produtos-a-venda',
         hidden: (item: FuseNavigationItem) => {
             const role = AuthUtils.getUserRole();
-            return !(role === 'ROLE_CLIENTE');
+            return !(role != 'ROLE_ADMIN');
         },
     },
 
@@ -34,7 +34,7 @@ export const compactNavigation: FuseNavigationItem[] = [
         link: '/carrinho',
         hidden: (item: FuseNavigationItem) => {
             const role = AuthUtils.getUserRole();
-            return !(role === 'ROLE_CLIENTE');
+            return !(role != 'ROLE_ADMIN');
         },
 
     },
