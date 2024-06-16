@@ -17,7 +17,14 @@ export const compactNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/example'
-    }
+    },
+    {
+        id: 'sair',
+        title: 'Sair',
+        type: 'basic',
+        icon: 'power_settings_new',
+        link: '/sign-out',
+    },
 ];
 export const futuristicNavigation: FuseNavigationItem[] = [
     {
