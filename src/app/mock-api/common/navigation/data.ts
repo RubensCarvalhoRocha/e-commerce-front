@@ -28,6 +28,11 @@ export const compactNavigation: FuseNavigationItem[] = [
         type: 'basic',
         icon: 'mat_outline:shopping_cart',
         link: '/carrinho',
+        hidden: (item: FuseNavigationItem) => {
+            const role = AuthUtils.getUserRole();
+            return !(role === 'ROLE_CLIENTE');
+        },
+
     },
 
 
