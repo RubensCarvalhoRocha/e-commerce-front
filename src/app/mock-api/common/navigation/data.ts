@@ -60,7 +60,7 @@ export const compactNavigation: FuseNavigationItem[] = [
 
     {
         id: 'sair',
-        title: 'Sair',
+        title: '',
         type: 'basic',
         icon: 'power_settings_new',
         link: '/sign-out',

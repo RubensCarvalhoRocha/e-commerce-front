@@ -13,7 +13,7 @@ import { CarrinhoComponent } from './modules/user/carrinho/carrinho.component';
 export const appRoutes: Route[] = [
 
     // Redirect empty path to '/example'
-    {path: '', pathMatch : 'full', redirectTo: 'produtos'},
+    {path: '', pathMatch : 'full', redirectTo: 'produtos-a-venda'},
 
     // Redirect signed-in user to the '/example'
     //
