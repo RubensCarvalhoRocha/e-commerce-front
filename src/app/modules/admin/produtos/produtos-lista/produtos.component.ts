@@ -77,9 +77,8 @@ export class ProdutosComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe((resultado: boolean) => {
             if (resultado) {
-                const id = this._route.snapshot.paramMap.get('id');
                 this._produtosService
-                    .buscarProdutoPeloId(Number(id))
+                    .listarProdutos()
                     .subscribe({});
             }
         });
