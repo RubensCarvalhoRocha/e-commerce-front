@@ -1,5 +1,6 @@
+import { ProdutoEditComponent } from './produto-edit/produto-edit.component';
 import { ProdutosComponent } from './produtos-lista/produtos.component';
-import { ResolverProdutos } from './produtos.resolver';
+import { ResolverProduto, ResolverProdutos } from './produtos.resolver';
 import { Route } from '@angular/router';
 
 export const produtosRoutes: Route[] = [
@@ -10,8 +11,10 @@ export const produtosRoutes: Route[] = [
         children: [
             {
                 path: ':id',
-                component: ProdutoComponent,
-                resolve: {},
+                component: ProdutoEditComponent,
+                resolve: {
+                    ResolverProduto
+                },
             },
         ],
     },

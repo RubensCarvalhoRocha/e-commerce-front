@@ -31,10 +31,27 @@ export class ProdutosService {
             );
     }
 
-    getProdutoById(produto: Produto): Observable<Produto> {
-        return this._produtos.pipe(
-            map((Produtos: Produto[]) => Produtos.find((Produto) => Produto.name === produto))
-        );
+    buscarProdutoPeloId(produtoId: number): Observable<Produto> {
+        return this.http
+            .get<Produto>(`${environment.api}/api/product/${produtoId}`)
+            .pipe(
+                catchError((error) => {
+                    return of(null);
+                })
+            );
+    }
+
+    salvarProduto(produto: Produto): Observable<Produto> {
+        const url = produto.id ? `${environment.api}/api/product/${produto.id}` : `${environment.api}/api/product/`;
+        const method = produto.id ? 'patch' : 'post';
+
+        return this.http
+        [method]<Produto>(url, produto)
+            .pipe(
+                catchError((error) => {
+                    return of(null);
+                })
+            );
     }
 
 }
