@@ -4,6 +4,8 @@ import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
 import { PedidosComponent } from './modules/admin/pedidos/pedidos.component';
+import { ProdutosAVendaComponent } from './modules/user/produtos-a-venda/produtos-a-venda.component';
+import { CarrinhoComponent } from './modules/user/carrinho/carrinho.component';
 
 // @formatter:off
 /* eslint-disable max-len */
@@ -19,6 +21,20 @@ export const appRoutes: Route[] = [
     // path. Below is another redirection for that path to redirect the user to the desired
     // location. This is a small convenience to keep all main routes together here on this file.
     {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'produtos'},
+
+    //Rotas Abertas para todos:
+    {
+        path: '',
+        component: LayoutComponent,
+        resolve: {
+            initialData: InitialDataResolver,
+        },
+        children: [
+            {path: 'produtos-a-venda', component : ProdutosAVendaComponent},
+            {path: 'carrinho', component : CarrinhoComponent},
+        ]
+    },
+
 
     // Auth routes for guests
     {
