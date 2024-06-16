@@ -11,13 +11,6 @@ export const defaultNavigation: FuseNavigationItem[] = [
     }
 ];
 export const compactNavigation: FuseNavigationItem[] = [
-    {
-        id   : 'example',
-        title: 'Example',
-        type : 'basic',
-        icon : 'heroicons_outline:chart-pie',
-        link : '/example'
-    },
 
     {
         id   : 'produtos',
@@ -25,6 +18,14 @@ export const compactNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'mat_solid:manage_search',
         link : '/produtos'
+    },
+
+    {
+        id   : 'pedidos',
+        title: 'Gerenciar Pedidos',
+        type : 'basic',
+        icon : 'mat_solid:delivery_dining',
+        link : '/pedidos'
     },
 
     {
