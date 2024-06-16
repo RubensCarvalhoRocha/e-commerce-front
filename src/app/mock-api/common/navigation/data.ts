@@ -1,5 +1,6 @@
 /* tslint:disable:max-line-length */
 import { FuseNavigationItem } from '@fuse/components/navigation';
+import { AuthUtils } from 'app/core/auth/auth.utils';
 
 export const defaultNavigation: FuseNavigationItem[] = [
     {
@@ -12,12 +13,37 @@ export const defaultNavigation: FuseNavigationItem[] = [
 ];
 export const compactNavigation: FuseNavigationItem[] = [
 
+    //Abertas:
+    {
+        id: 'produtos-a-venda',
+        title: 'Produtos',
+        type: 'basic',
+        icon: 'heroicons_outline:chart-pie',
+        link: '/produtos-a-venda',
+    },
+
+    {
+        id: 'carrinho',
+        title: 'Carrinho de Comparas',
+        type: 'basic',
+        icon: 'mat_outline:shopping_cart',
+        link: '/carrinho',
+    },
+
+
+
+
+    // Admin:
     {
         id   : 'produtos',
         title: 'Gerenciar Produtos',
         type : 'basic',
         icon : 'mat_solid:manage_search',
-        link : '/produtos'
+        link : '/produtos',
+        hidden: (item: FuseNavigationItem) => {
+            const role = AuthUtils.getUserRole();
+            return !(role === 'ROLE_ADMIN');
+        },
     },
 
     {
@@ -25,7 +51,11 @@ export const compactNavigation: FuseNavigationItem[] = [
         title: 'Gerenciar Pedidos',
         type : 'basic',
         icon : 'mat_solid:delivery_dining',
-        link : '/pedidos'
+        link : '/pedidos',
+        hidden: (item: FuseNavigationItem) => {
+            const role = AuthUtils.getUserRole();
+            return !(role === 'ROLE_ADMIN');
+        },
     },
 
     {
