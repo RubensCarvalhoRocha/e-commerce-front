@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Produto } from 'app/model/Produto';
 import { ProdutosService } from 'app/modules/admin/produtos/produtos.service';
 import notyf from 'app/utils/utils';
+import { CarrinhoService } from '../carrinho/carrinho.service';
 
 @Component({
   selector: 'app-produtos-a-venda',
@@ -24,7 +25,8 @@ export class ProdutosAVendaComponent implements OnInit {
     constructor(
         private _produtosService: ProdutosService,
         private _matDialog: MatDialog,
-        private _route: ActivatedRoute
+        private _route: ActivatedRoute,
+        private _carrinhoService: CarrinhoService
     ) {}
 
     ngOnInit(): void {
@@ -69,7 +71,12 @@ export class ProdutosAVendaComponent implements OnInit {
     //     });
     // }
 
+    adicionarAoCarrinho(produto : Produto){
+        this._carrinhoService.adicionarAoCarrinho(produto);
+    }
+
     teste() {
         notyf.success('Teste');
     }
+
 }
