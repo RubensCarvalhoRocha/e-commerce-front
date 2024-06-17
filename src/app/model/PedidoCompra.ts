@@ -1,6 +1,6 @@
 export class PedidoCompra {
     pedidoCompra: {
-        medicamentoId: number;
+        produtoId: number;
         quantidade: number;
     }[];
 
