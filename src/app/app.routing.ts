@@ -6,6 +6,7 @@ import { InitialDataResolver } from 'app/app.resolvers';
 import { PedidosComponent } from './modules/admin/pedidos/pedidos.component';
 import { ProdutosAVendaComponent } from './modules/user/produtos-a-venda/produtos-a-venda.component';
 import { CarrinhoComponent } from './modules/user/carrinho/carrinho.component';
+import { ResolverProdutos } from './modules/user/user.resolver';
 
 // @formatter:off
 /* eslint-disable max-len */
@@ -27,7 +28,7 @@ export const appRoutes: Route[] = [
         path: '',
         component: LayoutComponent,
         resolve: {
-            initialData: InitialDataResolver,
+            initialData: InitialDataResolver, ResolverProdutos
         },
         children: [
             {path: 'produtos-a-venda', component : ProdutosAVendaComponent},
