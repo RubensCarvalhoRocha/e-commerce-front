@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CarrinhoService } from './modules/user/carrinho/carrinho.service';
 
 @Component({
     selector   : 'app-root',
@@ -10,7 +11,12 @@ export class AppComponent
     /**
      * Constructor
      */
-    constructor()
+    constructor(
+        private _carrinhoService: CarrinhoService
+    )
     {
+        this._carrinhoService.carregarCarrinho();
     }
 }
+
+
