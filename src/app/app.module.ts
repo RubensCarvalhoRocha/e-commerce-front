@@ -11,6 +11,14 @@ import { mockApiServices } from 'app/mock-api';
 import { LayoutModule } from 'app/layout/layout.module';
 import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
+import { Produto } from './model/Produto';
+import { ProdutosAVendaComponent } from './modules/user/produtos-a-venda/produtos-a-venda.component';
+import { CarrinhoComponent } from './modules/user/carrinho/carrinho.component';
+import { CommonModule } from '@angular/common';
+import { FuseCardModule } from '@fuse/components/card';
+import { IconsModule } from './core/icons/icons.module';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
@@ -19,7 +27,7 @@ const routerConfig: ExtraOptions = {
 
 @NgModule({
     declarations: [
-        AppComponent,
+        AppComponent, ProdutosAVendaComponent, CarrinhoComponent
     ],
     imports     : [
         BrowserModule,
@@ -35,7 +43,14 @@ const routerConfig: ExtraOptions = {
         CoreModule,
 
         // Layout module of your application
-        LayoutModule
+        LayoutModule,
+
+        CommonModule,
+        FuseCardModule,
+        IconsModule,
+        MatIconModule,
+        MatButtonModule,
+
     ],
     bootstrap   : [
         AppComponent

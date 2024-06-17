@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between w-full">
             <div class="mb-2">
                 <h2 class="text-3xl font-semibold tracking-tight leading-8">
-                    Gerenciar Produtos
+                    Gerenciar Pedidos
                 </h2>
             </div>
         </div>
@@ -20,7 +20,7 @@
                         [autocomplete]="'off'"
                         [placeholder]="'Buscar'"
                         #searchField
-                        (keyup)="produtosFilter(searchField.value)"
+                        (keyup)="pedidosFilter(searchField.value)"
                     />
                 </mat-form-field>
             </div>
@@ -29,7 +29,7 @@
                 class="m-2"
                 mat-flat-button
                 [color]="'primary'"
-                (click)="editarProduto()"
+                (click)="editarPedido()"
             >
                 <span class="mx-2">Novo</span>
             </button>
@@ -38,7 +38,7 @@
         <div class="overflow-x-auto w-full">
             <table
                 mat-table
-                [dataSource]="produtosList"
+                [dataSource]="pedidosList"
                 class="overflow-x-auto w-full"
             >
                 <!-- Imagem -->
