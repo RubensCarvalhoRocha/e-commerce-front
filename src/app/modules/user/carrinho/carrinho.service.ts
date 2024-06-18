@@ -47,12 +47,16 @@ export class CarrinhoService {
             (item) => item.produtoId === produto.id
         );
 
-        carrinho.push({
-            produtoId: produto.id,
-            quantidadeSelecionada: 1,
-            nome: produto.name,
-            preco: produto.price,
-        });
+        if (existingProduct) {
+            existingProduct.quantidadeSelecionada += 1; // Aumenta a quantidade do produto existente
+        } else {
+            carrinho.push({
+                produtoId: produto.id,
+                quantidadeSelecionada: 1,
+                nome: produto.name,
+                preco: produto.price,
+            });
+        }
 
         this._listaProdutosCarrinho.next(carrinho);
         this.salvarCarrinho(carrinho);
