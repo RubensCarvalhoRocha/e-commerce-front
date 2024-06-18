@@ -42,12 +42,12 @@ export class PedidosService {
             );
     }
 
-    salvarPedido(produto: Produto): Observable<Produto> {
-        const url = produto.id ? `${environment.api}/api/product/${produto.id}` : `${environment.api}/api/product/`;
-        const method = produto.id ? 'patch' : 'post';
+    salvarPedido(pedido: Pedido): Observable<Pedido> {
+        const url = pedido.id ? `${environment.api}/api/product/${pedido.id}` : `${environment.api}/api/product/`;
+        const method = pedido.id ? 'patch' : 'post';
 
         return this.http
-        [method]<Produto>(url, produto)
+        [method]<Pedido>(url, pedido)
             .pipe(
                 catchError((error) => {
                     return of(null);
