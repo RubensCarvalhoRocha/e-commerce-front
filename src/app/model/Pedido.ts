@@ -45,6 +45,7 @@ export class Endereco {
   export class Pedido {
     id?: number;
     produtoId?: number;
+    nomeProduto?: string;
     quantidade?: number;
     statusPedido?: string;
     status?: boolean;

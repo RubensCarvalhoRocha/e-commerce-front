@@ -56,10 +56,10 @@ export class MeusPedidosComponent implements OnInit {
         if (applyFilter) {
             const searchTextLower = this.searchText.trim().toLowerCase();
             this.pedidosList.data = this.originalPedidosList.filter(
-                (produto) => {
+                (pedido) => {
                     return (
                         searchTextLower === '' ||
-                        produto.statusPedido.toLowerCase().includes(searchTextLower)
+                        pedido.nomeProduto.toLowerCase().includes(searchTextLower)
                         // ||
                         // produto.description
                         //     .toLowerCase()
