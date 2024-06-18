@@ -21,9 +21,9 @@ export class MeusPedidosComponent implements OnInit {
 
     displayedColumns: string[] = [
         'name',
-        'description',
-        'price',
+        'data',
         'quantity',
+        'status',
         'actions',
     ];
 
