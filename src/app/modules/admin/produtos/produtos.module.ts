@@ -25,11 +25,13 @@ import { produtosRoutes } from './produtos.routing';
 import { ProdutosComponent } from './produtos-lista/produtos.component';
 import { ProdutoEditComponent } from './produto-edit/produto-edit.component';
 import { PedidosComponent } from '../pedidos/pedidos.component';
+import { PedidoEditComponent } from '../pedidos/pedido-edit/pedido-edit.component';
 @NgModule({
   declarations: [
     ProdutosComponent,
     ProdutoEditComponent,
-    PedidosComponent
+    PedidosComponent,
+    PedidoEditComponent,
   ],
   imports: [
     CommonModule,

@@ -9,6 +9,7 @@ import { ProdutosService } from '../produtos/produtos.service';
 import { Pedido } from 'app/model/Pedido';
 import { PedidosService } from './pedidos.service';
 import { DatePipe } from '@angular/common';
+import { PedidoEditComponent } from './pedido-edit/pedido-edit.component';
 
 @Component({
     selector: 'app-pedidos',
@@ -68,22 +69,22 @@ export class PedidosComponent implements OnInit {
         }
     }
 
-    editarPedido(produto?: Produto): void {
-        // const dialogRef = this._matDialog.open(ProdutoEditComponent, {
-        //     width: '95%',
-        //     height: 'auto',
-        //     data: {
-        //         produto,
-        //     },
-        // });
+    editarPedido(pedido?: Pedido): void {
+        const dialogRef = this._matDialog.open(PedidoEditComponent, {
+            width: '95%',
+            height: 'auto',
+            data: {
+                pedido,
+            },
+        });
 
-        // dialogRef.afterClosed().subscribe((resultado: boolean) => {
-        //     if (resultado) {
-        //         this._pedidosService
-        //             .listarPedidos()
-        //             .subscribe({});
-        //     }
-        // });
+        dialogRef.afterClosed().subscribe((resultado: boolean) => {
+            if (resultado) {
+                this._pedidosService
+                    .listarPedidos()
+                    .subscribe({});
+            }
+        });
     }
 
     teste() {
