@@ -40,7 +40,7 @@ export class CarrinhoComponent implements OnInit {
 
     getTotal() {
         return this.origialProdutosCarrinhoList.reduce(
-            (acc, item) => acc + item.preco,
+            (acc, item) => acc + (item.preco * item.quantidadeSelecionada),
             0
         );
     }

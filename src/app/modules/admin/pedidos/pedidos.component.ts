@@ -59,10 +59,10 @@ export class PedidosComponent implements OnInit {
                     return (
                         searchTextLower === '' ||
                         pedido.usuario.email.toLowerCase().includes(searchTextLower)
-                        // ||
-                        // pedido.description
-                        //     .toLowerCase()
-                        //     .includes(searchTextLower)
+                        ||
+                        pedido.nomeProduto
+                            .toLowerCase()
+                            .includes(searchTextLower)
                     );
                 }
             );
