@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Produto } from 'app/model/Produto';
 import { ProdutoCarrinho } from 'app/model/ProdutoCarrinho';
+import { PedidoCompra } from 'app/model/PedidoCompra';
 
 @Injectable({
     providedIn: 'root',
@@ -68,5 +69,13 @@ export class CarrinhoService {
 
         // Clear the cart data from localStorage
         localStorage.removeItem('carrinho');
+    }
+
+    finalizarPedido(pedido: PedidoCompra): Observable<PedidoCompra> {
+        return this.http.post<PedidoCompra>(`${environment.api}/api/pedidos`, pedido).pipe(
+            catchError((error) => {
+                return of(null);
+            })
+        );
     }
 }
