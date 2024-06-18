@@ -88,7 +88,7 @@ export const appRoutes: Route[] = [
         canMatch: [AuthGuard],
         component: LayoutComponent,
         resolve: {
-            initialData: InitialDataResolver,
+            initialData: InitialDataResolver, ResolverPedidos
         },
         children: [
             {path: 'meus-pedidos', component : MeusPedidosComponent},
