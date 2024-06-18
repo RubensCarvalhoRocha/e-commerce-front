@@ -1,12 +1,14 @@
 import { Translation, TRANSLOCO_CONFIG, TRANSLOCO_LOADER, translocoConfig, TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { TranslocoHttpLoader } from 'app/core/transloco/transloco.http-loader';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
     exports  : [
         TranslocoModule
     ],
     providers: [
+        DatePipe,
         {
             // Provide the default Transloco configuration
             provide : TRANSLOCO_CONFIG,
