@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Pedido } from 'app/model/Pedido';
 import { MeusPedidosService } from './meus-pedidos.service';
 import { DatePipe } from '@angular/common';
+import { PedidosService } from 'app/modules/admin/pedidos/pedidos.service';
 
 @Component({
     selector: 'app-meus-pedidos',
@@ -32,15 +33,17 @@ export class MeusPedidosComponent implements OnInit {
     searchText: string = '';
 
     constructor(
-        private _meusPedidosService: MeusPedidosService,
+        private _pedidosService: PedidosService,
         private _matDialog: MatDialog,
         private _route: ActivatedRoute,
         private datePipe: DatePipe
     ) {}
 
     ngOnInit(): void {
-        this._meusPedidosService.pedidos$.subscribe((response) => {
+        this._pedidosService.pedidos$.subscribe((response) => {
+            console.log('resposta',response);
             this.originalPedidosList = response;
+            console.log(this.originalPedidosList);
             this.pedidosList = new MatTableDataSource(
                 this.originalPedidosList
             );
