@@ -7,6 +7,7 @@ import { PedidosComponent } from './modules/admin/pedidos/pedidos.component';
 import { ProdutosAVendaComponent } from './modules/user/produtos-a-venda/produtos-a-venda.component';
 import { CarrinhoComponent } from './modules/user/carrinho/carrinho.component';
 import { ResolverProdutos } from './modules/user/user.resolver';
+import { MeusPedidosComponent } from './modules/user/meus-pedidos/meus-pedidos.component';
 
 // @formatter:off
 /* eslint-disable max-len */
@@ -79,6 +80,20 @@ export const appRoutes: Route[] = [
             {path: 'home', loadChildren: () => import('app/modules/landing/home/home.module').then(m => m.LandingHomeModule)},
         ]
     },
+
+    //Client logado routes
+    {
+        path: '',
+        canMatch: [AuthGuard],
+        component: LayoutComponent,
+        resolve: {
+            initialData: InitialDataResolver,
+        },
+        children: [
+            {path: 'meus-pedidos', component : MeusPedidosComponent},
+        ]
+    },
+
 
     // Admin routes
     {

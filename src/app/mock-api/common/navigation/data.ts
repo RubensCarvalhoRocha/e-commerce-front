@@ -22,7 +22,7 @@ export const compactNavigation: FuseNavigationItem[] = [
         link: '/produtos-a-venda',
         hidden: (item: FuseNavigationItem) => {
             const role = AuthUtils.getUserRole();
-            return !(role != 'ROLE_ADMIN');
+            return role === 'ROLE_ADMIN';
         },
     },
 
@@ -34,11 +34,23 @@ export const compactNavigation: FuseNavigationItem[] = [
         link: '/carrinho',
         hidden: (item: FuseNavigationItem) => {
             const role = AuthUtils.getUserRole();
-            return !(role != 'ROLE_ADMIN');
+            return role === 'ROLE_ADMIN';
         },
 
     },
 
+    //Cliente:
+    {
+        id   : 'meus-pedidos',
+        title: 'Meus Pedidos',
+        type : 'basic',
+        icon : 'mat_solid:manage_search',
+        link : '/meus-pedidos',
+        hidden: (item: FuseNavigationItem) => {
+            const role = AuthUtils.getUserRole();
+            return !(role === 'ROLE_CLIENTE');
+        },
+    },
 
 
 
