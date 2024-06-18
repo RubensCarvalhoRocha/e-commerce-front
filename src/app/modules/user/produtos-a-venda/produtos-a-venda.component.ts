@@ -74,7 +74,7 @@ export class ProdutosAVendaComponent implements OnInit {
 
     adicionarAoCarrinho(produto : Produto){
         this._carrinhoService.adicionarAoCarrinho(produto);
-        notyf.success('Produto adicionado ao carrinho!');
+
     }
 
     teste() {
