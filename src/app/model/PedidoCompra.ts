@@ -1,7 +1,7 @@
 export class PedidoCompra {
     pedidoCompra: {
-        produtoId: number;
-        quantidade: number;
+        id: number;
+        quantity: number;
     }[];
 
     constructor(pedidoCompra?: Partial<PedidoCompra>) {
