@@ -20,7 +20,7 @@ export class MeusPedidosService {
 
     listarPedidos(): Observable<Pedido[]> {
         return this.http
-            .get<Pedido[]>(`${environment.api}/api/product/`)
+            .get<Pedido[]>(`${environment.api}/api/pedidos`)
             .pipe(
                 catchError((error) => {
                     this._pedidos.next([]);
