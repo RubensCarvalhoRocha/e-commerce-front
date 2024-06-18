@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CarrinhoService } from './carrinho.service';
 import { ProdutoCarrinho } from 'app/model/ProdutoCarrinho';
 import { Produto } from 'app/model/Produto';
+import { AuthService } from 'app/core/auth/auth.service';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-carrinho',
@@ -11,7 +13,10 @@ import { Produto } from 'app/model/Produto';
 export class CarrinhoComponent implements OnInit {
     origialProdutosCarrinhoList: ProdutoCarrinho[] = [];
 
-    constructor(private _carrinhoService: CarrinhoService) {}
+    constructor(private _carrinhoService: CarrinhoService,
+        private _authService: AuthService,
+        private _route: Router,
+    ) {}
 
     ngOnInit(): void {
         this._carrinhoService._listaProdutosCarrinho$.subscribe((response: ProdutoCarrinho[]) => {
@@ -28,5 +33,17 @@ export class CarrinhoComponent implements OnInit {
         return this.origialProdutosCarrinhoList.reduce((acc, item) => acc + item.preco, 0);
     }
 
-    realizarPedido(){}
+    realizarPedido() {
+        this._authService.check().subscribe(isAuthenticated => {
+          if (isAuthenticated) {
+            // O usuário está logado, pode realizar o pedido
+            this.procederComPedido();
+          } else {
+            // O usuário não está logado, redirecionar para a rota de login
+            this._route.navigate(['/sign-in']);
+          }
+        });
+      }
+
+      procederComPedido(){}
 }
