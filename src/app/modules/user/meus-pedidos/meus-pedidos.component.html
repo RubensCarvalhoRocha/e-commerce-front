@@ -25,14 +25,14 @@
                 </mat-form-field>
             </div>
 
-            <button
+            <!-- <button
                 class="m-2"
                 mat-flat-button
                 [color]="'primary'"
                 (click)="editarPedido()"
             >
                 <span class="mx-2">Novo</span>
-            </button>
+            </button> -->
         </div>
 
         <div class="overflow-x-auto w-full">
@@ -41,47 +41,53 @@
                 [dataSource]="pedidosList"
                 class="overflow-x-auto w-full"
             >
-
                 <!-- Name Column -->
                 <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef>Nome</th>
-                    <td mat-cell *matCellDef="let produto">
-                        {{ produto?.name }}
+                    <th mat-header-cell *matHeaderCellDef>Email</th>
+                    <td mat-cell *matCellDef="let pedido">
+                        {{ pedido?.usuario.email }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="endereco">
+                    <th mat-header-cell *matHeaderCellDef>Endereço</th>
+                    <td mat-cell *matCellDef="let pedido">
+                        cep: {{ pedido?.usuario.pessoa.endereco.cep }}
                     </td>
                 </ng-container>
 
                 <!-- Descrição Column -->
                 <ng-container matColumnDef="data">
                     <th mat-header-cell *matHeaderCellDef>Data</th>
-                    <td mat-cell *matCellDef="let produto">
-                        {{ produto?.data }}
+                    <td mat-cell *matCellDef="let pedido">
+                        {{ pedido?.dataHora | date : "dd/MM/yyyy HH:mm:ss" }}
                     </td>
                 </ng-container>
 
                 <!-- City Column -->
-                <ng-container matColumnDef="quantity">
-                    <th mat-header-cell *matHeaderCellDef>Quantidade</th>
-                    <td mat-cell *matCellDef="let produto">
-                        {{ produto?.quantity }}
+                <ng-container matColumnDef="produto">
+                    <th mat-header-cell *matHeaderCellDef>Produto</th>
+                    <td mat-cell *matCellDef="let pedido">
+                        {{ pedido?.produtoId }}
                     </td>
                 </ng-container>
 
                 <!-- City Column -->
                 <ng-container matColumnDef="status">
                     <th mat-header-cell *matHeaderCellDef>Status</th>
-                    <td mat-cell *matCellDef="let produto">
-                        {{ produto?.status }}
+                    <td mat-cell *matCellDef="let pedido">
+                        {{ pedido?.statusPedido }}
                     </td>
                 </ng-container>
 
                 <!-- Retirar -->
                 <ng-container matColumnDef="actions">
                     <th mat-header-cell *matHeaderCellDef>Ações</th>
-                    <td mat-cell *matCellDef="let produto">
+                    <td mat-cell *matCellDef="let pedido">
                         <button
                             mat-icon-button
                             class="p-1 border border-black rounded-full"
-                            (click)="editarProduto(produto)"
+                            (click)="editarpedido(pedido)"
                         >
                             <mat-icon svgIcon="edit"></mat-icon>
                         </button>
