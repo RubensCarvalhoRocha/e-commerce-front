@@ -74,7 +74,7 @@ export class CarrinhoComponent implements OnInit {
                 this.esvaziarCarrinho();
             },
             error: (error) => {
-                notyf.error('Algo deu errado! Tente novamente.');
+                notyf.error( error?.error?.message || 'Algo deu errado! Tente novamente.');
                 console.error(error);
             },
         });

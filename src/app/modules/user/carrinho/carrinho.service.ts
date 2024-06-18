@@ -83,10 +83,5 @@ export class CarrinhoService {
     finalizarPedido(pedido: PedidoCompra): Observable<PedidoCompra> {
         return this.http
             .post<PedidoCompra>(`${environment.api}/api/pedidos`, pedido)
-            .pipe(
-                catchError((error) => {
-                    return of(null);
-                })
-            );
     }
 }
