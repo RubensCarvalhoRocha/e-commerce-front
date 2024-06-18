@@ -8,6 +8,7 @@ import { ProdutosAVendaComponent } from './modules/user/produtos-a-venda/produto
 import { CarrinhoComponent } from './modules/user/carrinho/carrinho.component';
 import { ResolverProdutos } from './modules/user/user.resolver';
 import { MeusPedidosComponent } from './modules/user/meus-pedidos/meus-pedidos.component';
+import { ResolverPedidos } from './modules/admin/produtos/produtos.resolver';
 
 // @formatter:off
 /* eslint-disable max-len */
@@ -101,7 +102,7 @@ export const appRoutes: Route[] = [
         canMatch: [AuthGuard],
         component: LayoutComponent,
         resolve: {
-            initialData: InitialDataResolver,
+            initialData: InitialDataResolver, ResolverPedidos
         },
         children: [
             {path: 'produtos', loadChildren: () => import('app/modules/admin/produtos/produtos.module').then(m => m.ProdutosModule)},

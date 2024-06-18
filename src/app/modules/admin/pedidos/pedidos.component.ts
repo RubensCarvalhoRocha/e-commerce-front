@@ -22,11 +22,9 @@ export class PedidosComponent implements OnInit {
 
     displayedColumns: string[] = [
         'name',
-        'description',
-        'price',
+        'data',
         'quantity',
-        'actions',
-        // 'image',
+        'status',
     ];
 
     searchText: string = '';
