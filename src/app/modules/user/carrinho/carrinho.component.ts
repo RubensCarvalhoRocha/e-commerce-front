@@ -34,6 +34,10 @@ export class CarrinhoComponent implements OnInit {
         this._carrinhoService.adicionarAoCarrinho(produto);
     }
 
+    esvaziarCarrinho() {
+        this._carrinhoService.esvaziarCarrinho();
+    }
+
     getTotal() {
         return this.origialProdutosCarrinhoList.reduce(
             (acc, item) => acc + item.preco,
@@ -55,22 +59,24 @@ export class CarrinhoComponent implements OnInit {
 
     procederComPedido() {
         // Mapeia a lista de produtos do carrinho para o formato esperado pela API
-        const pedidoCompra = this.origialProdutosCarrinhoList.map(item => ({
+        const pedidoCompra = this.origialProdutosCarrinhoList.map((item) => ({
             id: item.produtoId,
-            quantity: item.quantidadeSelecionada
+            quantity: item.quantidadeSelecionada,
         }));
 
         // Cria o objeto de pedido no formato correto
         const pedido = new PedidoCompra({ pedidoCompra });
 
         // Chama o serviço para finalizar o pedido
-        this._carrinhoService.finalizarPedido(pedido).subscribe(response => {
-            if (response) {
+        this._carrinhoService.finalizarPedido(pedido).subscribe({
+            next: () => {
                 notyf.success('Pedido realizado com sucesso!');
-               this._carrinhoService.esvaziarCarrinho();
-            } else {
-                notyf.error('Erro ao realizar o pedido.');
-            }
+                this.esvaziarCarrinho();
+            },
+            error: (error) => {
+                notyf.error('Algo deu errado! Tente novamente.');
+                console.error(error);
+            },
         });
     }
 }
