@@ -33,6 +33,7 @@ export class ProdutosAVendaComponent implements OnInit {
         this._produtosService._produtos$.subscribe((response: Produto[]) => {
             this.origialProdutosList = response;
         });
+        console.log(this.origialProdutosList);
     }
 
     // produtosFilter(text: string, applyFilter: boolean = true) {

@@ -19,6 +19,11 @@ import { FuseCardModule } from '@fuse/components/card';
 import { IconsModule } from './core/icons/icons.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MeusPedidosComponent } from './modules/user/meus-pedidos/meus-pedidos.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
@@ -27,7 +32,7 @@ const routerConfig: ExtraOptions = {
 
 @NgModule({
     declarations: [
-        AppComponent, ProdutosAVendaComponent, CarrinhoComponent
+        AppComponent, ProdutosAVendaComponent, CarrinhoComponent, MeusPedidosComponent
     ],
     imports     : [
         BrowserModule,
@@ -50,6 +55,10 @@ const routerConfig: ExtraOptions = {
         IconsModule,
         MatIconModule,
         MatButtonModule,
+        MatFormFieldModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatInputModule,
 
     ],
     bootstrap   : [
