@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
 
-    api : 'http://localhost:8080',
+    api : 'https://crocheteria-e-commerce-back-d1a0f63300c7.herokuapp.com',
 };
