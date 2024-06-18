@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProdutosService } from '../produtos/produtos.service';
 import { Pedido } from 'app/model/Pedido';
 import { PedidosService } from './pedidos.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-pedidos',
@@ -23,8 +24,10 @@ export class PedidosComponent implements OnInit {
     displayedColumns: string[] = [
         'name',
         'data',
-        'quantity',
+        'produto',
         'status',
+        'endereco',
+        'actions',
     ];
 
     searchText: string = '';
@@ -32,7 +35,8 @@ export class PedidosComponent implements OnInit {
     constructor(
         private _pedidosService: PedidosService,
         private _matDialog: MatDialog,
-        private _route: ActivatedRoute
+        private _route: ActivatedRoute,
+        private datePipe: DatePipe
     ) {}
 
     ngOnInit(): void {
@@ -50,12 +54,12 @@ export class PedidosComponent implements OnInit {
         if (applyFilter) {
             const searchTextLower = this.searchText.trim().toLowerCase();
             this.pedidosList.data = this.originalPedidosList.filter(
-                (produto) => {
+                (pedido) => {
                     return (
                         searchTextLower === '' ||
-                        produto.name.toLowerCase().includes(searchTextLower)
+                        pedido.usuario.email.toLowerCase().includes(searchTextLower)
                         // ||
-                        // produto.description
+                        // pedido.description
                         //     .toLowerCase()
                         //     .includes(searchTextLower)
                     );
