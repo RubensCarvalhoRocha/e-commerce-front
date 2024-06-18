@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Pedido } from 'app/model/Pedido';
 import { MeusPedidosService } from './meus-pedidos.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-meus-pedidos',
@@ -22,8 +23,9 @@ export class MeusPedidosComponent implements OnInit {
     displayedColumns: string[] = [
         'name',
         'data',
-        'quantity',
+        'produto',
         'status',
+        'endereco',
         'actions',
     ];
 
@@ -32,7 +34,8 @@ export class MeusPedidosComponent implements OnInit {
     constructor(
         private _meusPedidosService: MeusPedidosService,
         private _matDialog: MatDialog,
-        private _route: ActivatedRoute
+        private _route: ActivatedRoute,
+        private datePipe: DatePipe
     ) {}
 
     ngOnInit(): void {
@@ -53,7 +56,7 @@ export class MeusPedidosComponent implements OnInit {
                 (produto) => {
                     return (
                         searchTextLower === '' ||
-                        produto.name.toLowerCase().includes(searchTextLower)
+                        produto.statusPedido.toLowerCase().includes(searchTextLower)
                         // ||
                         // produto.description
                         //     .toLowerCase()

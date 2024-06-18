@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { Produto } from 'app/model/Produto';
 import { ProdutoCarrinho } from 'app/model/ProdutoCarrinho';
 import { PedidoCompra } from 'app/model/PedidoCompra';
+import notyf from 'app/utils/utils';
 
 @Injectable({
     providedIn: 'root',
@@ -34,24 +35,28 @@ export class CarrinhoService {
     }
 
     adicionarAoCarrinho(produto: Produto): void {
+        // Verifica se o produto tem quantidade disponível no estoque
+        if (!produto.quantity || produto.quantity <= 0) {
+            // Exibe uma mensagem de aviso (pode usar um toast ou outro método)
+            notyf.error('Produto fora de estoque');
+            return; // Sai da função, não adiciona ao carrinho
+        }
+
         const carrinho = this._listaProdutosCarrinho.getValue();
         const existingProduct = carrinho.find(
             (item) => item.produtoId === produto.id
         );
 
-        if (existingProduct) {
-            existingProduct.quantidadeSelecionada++;
-        } else {
-            carrinho.push({
-                produtoId: produto.id,
-                quantidadeSelecionada: 1,
-                nome: produto.name,
-                preco: produto.price,
-            });
-        }
+        carrinho.push({
+            produtoId: produto.id,
+            quantidadeSelecionada: 1,
+            nome: produto.name,
+            preco: produto.price,
+        });
 
         this._listaProdutosCarrinho.next(carrinho);
         this.salvarCarrinho(carrinho);
+        notyf.success('Produto adicionado ao carrinho!');
     }
 
     removerDoCarrinho() {}
@@ -72,10 +77,12 @@ export class CarrinhoService {
     }
 
     finalizarPedido(pedido: PedidoCompra): Observable<PedidoCompra> {
-        return this.http.post<PedidoCompra>(`${environment.api}/api/pedidos`, pedido).pipe(
-            catchError((error) => {
-                return of(null);
-            })
-        );
+        return this.http
+            .post<PedidoCompra>(`${environment.api}/api/pedidos`, pedido)
+            .pipe(
+                catchError((error) => {
+                    return of(null);
+                })
+            );
     }
 }
